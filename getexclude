@@ -4,14 +4,12 @@ START=99
 
 start () {
 	DOMAINS=https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/zapret-hosts-user-exclude.txt
-	count=0
 	while true; do
 		if curl -m 3 github.com; then
 			curl -f $DOMAINS --output /opt/zapret/ipset/zapret-hosts-user-exclude.txt
 			break
 		else
-			echo "GitHub is not available. Check the internet availability [$count]"
-			count=$((count+1))
+			sleep 10
 		fi
 	done
 	
