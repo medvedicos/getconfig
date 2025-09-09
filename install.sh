@@ -1,7 +1,5 @@
 #!/bin/bash
 
-/etc/init.d/zapret stop
-
 #Скачивание конфига
 curl -f https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getconfig --output /etc/init.d/getconfig
 chmod +x /etc/init.d/getconfig
