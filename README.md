@@ -6,7 +6,7 @@
 ```
 **Тис-Диалог**
 ```
-/etc/init.d/zapret stop && wget https://github.com/medvedicos/getconfig/edit/main/kaliningrad/tis-dialog/install.sh && chmod 777 install.sh && sh install.sh
+/etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/kaliningrad/tis-dialog/install.sh && chmod 777 install.sh && sh install.sh
 ```
 
 # Установка (Конфиг)
