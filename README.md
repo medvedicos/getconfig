@@ -5,12 +5,12 @@
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/install.sh && chmod 777 install.sh && sh install.sh
 ```
 
-**Бизнес Связь**
+**Бизнес Связь (Сочи)**
 ```
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/BusinesSvyaz/install.sh && chmod 777 install.sh && sh install.sh
 ```
 
-**Тис-Диалог**
+**Тис-Диалог (Калининград)**
 ```
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/kaliningrad/tis-dialog/install.sh && chmod 777 install.sh && sh install.sh
 ```
