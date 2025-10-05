@@ -4,7 +4,7 @@ START=99
 
 start () {
 	/etc/init.d/zapret stop
-	DOMAINS=https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/config
+	DOMAINS=https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/Dtel/config
 	while true; do
 		if curl -m 3 github.com; then
 			curl -f $DOMAINS --output /opt/zapret/config
