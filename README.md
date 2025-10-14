@@ -10,6 +10,11 @@
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/Dtel/install.sh && chmod 777 install.sh && sh install.sh
 ```
 
+**SlavCom**
+```
+/etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/SlavCom/install.sh && chmod 777 install.sh && sh install.sh
+```
+
 **Бизнес Связь (Сочи)**
 ```
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/BusinesSvyaz/install.sh && chmod 777 install.sh && sh install.sh
