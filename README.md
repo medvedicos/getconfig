@@ -2,10 +2,11 @@
 
 ## Россия
 
-**Ростелеком**
+- **Ростелеком**
 ```
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/install.sh && chmod 777 install.sh && sh install.sh
 ```
+
 
 ## Сочи
 
@@ -26,10 +27,11 @@
 
 ## Калининград
 
-**Тис-Диалог (Калининград)**
+- **Тис-Диалог (Калининград)**
 ```
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/kaliningrad/tis-dialog/install.sh && chmod 777 install.sh && sh install.sh
 ```
+
 
 # Установка (Конфиг)
 
