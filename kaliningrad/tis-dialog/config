@@ -69,7 +69,7 @@ TPWS_OPT="
 
 NFQWS_ENABLE=1
 # redirect outgoing traffic with connbytes limiter applied in both directions.
-NFQWS_PORTS_TCP=443
+NFQWS_PORTS_TCP=443,2053,2083,2087,2096,8443
 NFQWS_PORTS_UDP=443,50000-50100
 # PKT_OUT means connbytes dir original
 # PKT_IN means connbytes dir reply
@@ -90,7 +90,8 @@ NFQWS_UDP_PKT_IN=0
 NFQWS_OPT="
 --filter-tcp=443 --dpi-desync=fake,multisplit --dpi-desync-fake-tls=0x00000000 --dpi-desync-fake-tls=! --dpi-desync-split-pos=1 --dpi-desync-repeats=2 --dpi-desync-fooling=badseq,hopbyhop2 --dpi-desync-fake-tls-mod=rnd,dupsid,sni=www.google.com <HOSTLIST> --new
 --filter-udp=443 --dpi-desync=fake,multidisorder --dpi-desync-repeats=6 --dpi-desync-fake-quic="/opt/zapret/files/fake/quic_initial_www_google_com.bin" <HOSTLIST_NOAUTO> --new
---filter-udp=50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-repeats=6 <HOSTLIST>
+--filter-udp=50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-repeats=6 <HOSTLIST> --new
+--filter-tcp=2053,2083,2087,2096,8443 --hostlist-domains=discord.media --dpi-desync=fake --dpi-desync-fake-tls-mod=none --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=2 <HOSTLIST>
 "
 
 # none,ipset,hostlist,autohostlist
