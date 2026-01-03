@@ -376,3 +376,5 @@ cloudflare-ipfs.com
 cloudflare.net
 cloudflare.com
 cloudflareresolve.com
+soundcloud.cloud
+sndcdn.com
