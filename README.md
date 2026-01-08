@@ -23,6 +23,11 @@
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/SlavCom/install.sh && chmod 777 install.sh && sh install.sh
 ```
 
+- **GigLAN**
+```
+/etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/giglan/install.sh && chmod 777 install.sh && sh install.sh
+```
+
 - **Бизнес Связь**
 ```
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/BusinesSvyaz/install.sh && chmod 777 install.sh && sh install.sh
