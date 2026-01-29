@@ -135,3 +135,5 @@ tiktok.com
 ya.ru
 t-bank-app.ru
 t-bank-app.su
+tidal.com
+yandex.com
