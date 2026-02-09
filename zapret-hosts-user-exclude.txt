@@ -138,3 +138,5 @@ t-bank-app.su
 tidal.com
 yandex.com
 xboxlive.com
+max.ru
+kaspersky.com
