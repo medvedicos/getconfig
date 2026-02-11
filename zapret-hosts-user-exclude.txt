@@ -137,3 +137,10 @@ yandex.com
 xboxlive.com
 max.ru
 kaspersky.com
+mts.ru
+live.com
+rudesktop.ru
+rustore.ru
+drom.ru
+vkuseraudio.net
+userapi.com
