@@ -16,7 +16,7 @@ download_and_enable() {
 }
 
 download_and_enable getconfig \
-    "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getconfig"
+    "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/Megafon/getconfig"
 
 download_and_enable getexclude \
     "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getexclude"
