@@ -1,15 +1,36 @@
 #!/bin/bash
-
-#Скачивание конфига
-curl -f https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/giglan/getconfig --output /etc/init.d/getconfig
-chmod +x /etc/init.d/getconfig
-/etc/init.d/getconfig enable
-/etc/init.d/getconfig start
-
-curl -f https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getexclude --output /etc/init.d/getexclude
-chmod +x /etc/init.d/getexclude
-/etc/init.d/getexclude enable
-/etc/init.d/getexclude start
-
-echo "4 0 * * 1  /etc/init.d/getconfig" >> /etc/crontabs/root
-echo "4 0 * * 1  /etc/init.d/getexclude" >> /etc/crontabs/root
+set -e  # остановить выполнение при любой ошибке
+CRONTAB=/etc/crontabs/root
+CRON_TIME="4 0 * * 1"
+download_and_enable() {
+    local name="$1"
+    local url="$2"
+    local dest="/etc/init.d/$name"
+    echo "[*] Скачиваем $name..."
+    curl -fsSL "$url" --output "$dest" || { echo "[!] Ошибка скачивания $name"; return 1; }
+    chmod +x "$dest"
+    "$dest" enable && "$dest" start && echo "[+] $name запущен"
+}
+# Единоразовое скачивание списка доменов
+HOSTS_URL="https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/zapret-hosts-auto.txt"
+HOSTS_DEST="/opt/zapret/ipset/zapret-hosts-auto.txt"
+echo "[*] Скачиваем список доменов..."
+mkdir -p "$(dirname "$HOSTS_DEST")"
+curl -fsSL "$HOSTS_URL" --output "$HOSTS_DEST" \
+    && echo "[+] Список доменов сохранён в $HOSTS_DEST" \
+    || echo "[!] Ошибка скачивания списка доменов"
+download_and_enable getconfig \
+    "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/giglan/getconfig"
+download_and_enable getexclude \
+    "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getexclude"
+# Добавляем cron только если записи ещё нет
+for service in getconfig getexclude; do
+    CRON_ENTRY="$CRON_TIME  /etc/init.d/$service restart"
+    if ! grep -qF "$CRON_ENTRY" "$CRONTAB" 2>/dev/null; then
+        echo "$CRON_ENTRY" >> "$CRONTAB"
+        echo "[+] Cron для $service добавлен"
+    else
+        echo "[-] Cron для $service уже существует, пропускаем"
+    fi
+done
+echo "[*] Готово"
