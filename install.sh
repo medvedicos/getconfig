@@ -1,26 +1,28 @@
 #!/bin/bash
 set -e  # остановить выполнение при любой ошибке
-
 CRONTAB=/etc/crontabs/root
 CRON_TIME="4 0 * * 1"
-
 download_and_enable() {
     local name="$1"
     local url="$2"
     local dest="/etc/init.d/$name"
-
     echo "[*] Скачиваем $name..."
     curl -fsSL "$url" --output "$dest" || { echo "[!] Ошибка скачивания $name"; return 1; }
     chmod +x "$dest"
     "$dest" enable && "$dest" start && echo "[+] $name запущен"
 }
-
+# Единоразовое скачивание списка доменов
+HOSTS_URL="https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/zapret-hosts-auto.txt"
+HOSTS_DEST="/opt/zapret/ipset/zapret-hosts-auto.txt"
+echo "[*] Скачиваем список доменов..."
+mkdir -p "$(dirname "$HOSTS_DEST")"
+curl -fsSL "$HOSTS_URL" --output "$HOSTS_DEST" \
+    && echo "[+] Список доменов сохранён в $HOSTS_DEST" \
+    || echo "[!] Ошибка скачивания списка доменов"
 download_and_enable getconfig \
     "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getconfig"
-
 download_and_enable getexclude \
     "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getexclude"
-
 # Добавляем cron только если записи ещё нет
 for service in getconfig getexclude; do
     CRON_ENTRY="$CRON_TIME  /etc/init.d/$service restart"
@@ -31,5 +33,4 @@ for service in getconfig getexclude; do
         echo "[-] Cron для $service уже существует, пропускаем"
     fi
 done
-
 echo "[*] Готово"
