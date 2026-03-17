@@ -1,19 +1,35 @@
 #!/bin/bash
+set -e  # остановить выполнение при любой ошибке
 
-# ─── getconfig ───────────────────────────────────────────────
-curl -f https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getconfig \
-     --output /etc/init.d/getconfig
-chmod +x /etc/init.d/getconfig
-/etc/init.d/getconfig enable
-/etc/init.d/getconfig start
+CRONTAB=/etc/crontabs/root
+CRON_TIME="4 0 * * 1"
 
-# ─── getexclude ──────────────────────────────────────────────
-curl -f https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getexclude \
-     --output /etc/init.d/getexclude
-chmod +x /etc/init.d/getexclude
-/etc/init.d/getexclude enable
-/etc/init.d/getexclude start
+download_and_enable() {
+    local name="$1"
+    local url="$2"
+    local dest="/etc/init.d/$name"
 
-# ─── Cron-задачи (каждый понедельник в 00:04) ────────────────
-echo "4 0 * * 1  /etc/init.d/getconfig"  >> /etc/crontabs/root
-echo "4 0 * * 1  /etc/init.d/getexclude" >> /etc/crontabs/root
+    echo "[*] Скачиваем $name..."
+    curl -fsSL "$url" --output "$dest" || { echo "[!] Ошибка скачивания $name"; return 1; }
+    chmod +x "$dest"
+    "$dest" enable && "$dest" start && echo "[+] $name запущен"
+}
+
+download_and_enable getconfig \
+    "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getconfig"
+
+download_and_enable getexclude \
+    "https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/getexclude"
+
+# Добавляем cron только если записи ещё нет
+for service in getconfig getexclude; do
+    CRON_ENTRY="$CRON_TIME  /etc/init.d/$service restart"
+    if ! grep -qF "$CRON_ENTRY" "$CRONTAB" 2>/dev/null; then
+        echo "$CRON_ENTRY" >> "$CRONTAB"
+        echo "[+] Cron для $service добавлен"
+    else
+        echo "[-] Cron для $service уже существует, пропускаем"
+    fi
+done
+
+echo "[*] Готово"
