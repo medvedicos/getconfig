@@ -43,3 +43,10 @@
 ```
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/kaliningrad/tis-dialog/install.sh && chmod 777 install.sh && sh install.sh
 ```
+
+## Омск
+
+- **Омские Кабельные Сети (OKS) (Омск)**
+```
+/etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/omsk/OKS/install.sh && chmod 777 install.sh && sh install.sh
+```
