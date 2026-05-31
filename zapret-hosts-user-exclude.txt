@@ -38,7 +38,6 @@ yandex.net
 yandex.ru
 yastatic.net
 githubassets.com
-githubusercontent.com
 github.com
 yoomoney.ru
 www.tbank.ru
