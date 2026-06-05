@@ -98,6 +98,11 @@ dzen.ru
 playstation.net
 tiktokv.com
 tiktok.com
+tiktokcdn.com
+tiktokpangle.us
+pangle.io
+tiktokpangle-cdn-us.com
+tiktokcdn-eu.com
 ya.ru
 t-bank-app.ru
 t-bank-app.su
