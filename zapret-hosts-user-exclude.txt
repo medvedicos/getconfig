@@ -139,3 +139,5 @@ x5.ru
 quattro-tech.ru
 easydocs.ru
 sbermarketing.ru
+steamstatic.com
+fastly.net
