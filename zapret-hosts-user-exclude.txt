@@ -142,3 +142,5 @@ sbermarketing.ru
 steamstatic.com
 fastly.net
 dzeninfra.ru
+roblox.com
+rbxcdn.com
