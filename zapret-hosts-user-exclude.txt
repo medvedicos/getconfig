@@ -144,3 +144,4 @@ fastly.net
 dzeninfra.ru
 roblox.com
 rbxcdn.com
+wikimedia.org
