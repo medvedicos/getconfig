@@ -145,3 +145,7 @@ dzeninfra.ru
 roblox.com
 rbxcdn.com
 wikimedia.org
+samsungqbe.com
+samsungcloudsolution.com
+samsungconsent.com
+samsungcloudcdn.com
