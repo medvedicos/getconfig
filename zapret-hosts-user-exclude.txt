@@ -149,3 +149,5 @@ samsungqbe.com
 samsungcloudsolution.com
 samsungconsent.com
 samsungcloudcdn.com
+okcdn.ru
+dzener.ru
