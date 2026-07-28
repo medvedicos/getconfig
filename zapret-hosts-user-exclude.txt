@@ -153,3 +153,4 @@ okcdn.ru
 dzener.ru
 befactor.ru
 demo1.pro
+mycdn.ink
