@@ -149,8 +149,10 @@ samsungqbe.com
 samsungcloudsolution.com
 samsungconsent.com
 samsungcloudcdn.com
+samsungapps.com
 okcdn.ru
 dzener.ru
 befactor.ru
 demo1.pro
 mycdn.ink
+rt.ru
