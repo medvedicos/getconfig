@@ -159,3 +159,4 @@ rt.ru
 ngenix.net
 serving-sys.ru
 massgrave.dev
+ajax.systems
