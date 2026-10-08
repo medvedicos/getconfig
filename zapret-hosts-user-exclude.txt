@@ -164,3 +164,4 @@ google.com
 dns.google
 google.ru
 get.activated.win
+boardgamearena.com
