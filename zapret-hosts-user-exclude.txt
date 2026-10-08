@@ -161,7 +161,6 @@ serving-sys.ru
 massgrave.dev
 ajax.systems
 google.com
-dns.google
 google.ru
 get.activated.win
 boardgamearena.com
