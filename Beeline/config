@@ -70,7 +70,7 @@ TPWS_OPT="
 NFQWS_ENABLE=1
 # redirect outgoing traffic with connbytes limiter applied in both directions.
 NFQWS_PORTS_TCP=443,2053,2083,2087,2096,8443
-NFQWS_PORTS_UDP=443,19294-19344,50000-50100
+NFQWS_PORTS_UDP=19294-19344,50000-50100
 # PKT_OUT means connbytes dir original
 # PKT_IN means connbytes dir reply
 # this is --dpi-desync-cutoff=nX kernel mode implementation for linux. it saves a lot of CPU.
@@ -88,9 +88,9 @@ NFQWS_UDP_PKT_IN=0
 # hostlist markers are replaced to empty string if MODE_FILTER does not satisfy
 # <HOSTLIST_NOAUTO> appends ipset/zapret-hosts-auto.txt as normal list
 NFQWS_OPT="
---filter-tcp=443 --dpi-desync=hostfakesplit --dpi-desync-hostfakesplit-mod=host=www.google.com --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=0 <HOSTLIST> --new
---filter-udp=443 --dpi-desync=fake,multidisorder --dpi-desync-repeats=6 --dpi-desync-fake-quic="/opt/zapret/files/fake/quic_initial_www_google_com.bin" <HOSTLIST_NOAUTO> --new
---filter-udp=19294-19344,50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-fake-discord="/opt/zapret/files/fake/ACTIVE_DISCORD_UDP.bin" --dpi-desync-fake-stun="/opt/zapret/files/fake/ACTIVE_DISCORD_UDP.bin" --dpi-desync-repeats=5 --new
+--filter-tcp=443 --hostlist-domains=googlevideo.com --dpi-desync=multisplit --dpi-desync-split-seqovl=1 --dpi-desync-split-seqovl-pattern=/opt/zapret/files/fake/tls_clienthello_www_google_com.bin --dpi-desync-split-pos=host+3,host+6,host+11,host+16,sld+2,midsld+4,midsld+2,endhost-11 --dpi-desync-repeats=1 --new
+--filter-tcp=443 --ip-id=zero --dpi-desync=fake,fakedsplit --dpi-desync-split-pos=1 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=2 --dpi-desync-repeats=8 --dpi-desync-fake-tls-mod=rnd,dupsid,sni=www.google.com <HOSTLIST> --new
+--filter-udp=19294-19344,50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-discord="/opt/zapret/files/fake/quic_initial_www_google_com.bin" --dpi-desync-fake-stun="/opt/zapret/files/fake/quic_initial_www_google_com.bin" --new
 --filter-tcp=2053,2083,2087,2096,8443 --hostlist-domains=discord.media --dpi-desync=fake --dpi-desync-fake-tls-mod=none --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=2
 "
 
