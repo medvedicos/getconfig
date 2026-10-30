@@ -37,6 +37,11 @@
 /etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/BusinesSvyaz/install.sh && chmod 777 install.sh && sh install.sh
 ```
 
+- **Сочи Онлайн**
+```
+/etc/init.d/zapret stop && wget https://raw.githubusercontent.com/medvedicos/getconfig/refs/heads/main/sochi-online/install.sh && chmod 777 install.sh && sh install.sh
+```
+
 ## Калининград
 
 - **Тис-Диалог (Калининград)**
